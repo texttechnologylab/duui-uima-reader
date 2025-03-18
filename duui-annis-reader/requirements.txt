@@ -1,0 +1,12 @@
+# graphannis
+pandas
+fastapi
+pydantic
+pydantic-settings
+starlette
+uvicorn
+dkpro-cassis
+python-multipart
+websockets
+tqdm
+Deprecated

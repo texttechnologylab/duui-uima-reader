@@ -1,0 +1,1 @@
+docker run -d -p 9714:9714 duui-annis_reader:0.1
