@@ -79,6 +79,7 @@ public class Converter {
         importers.add("CoNLLCorefImporter");
         //importers.add("SaltXMLImporter");
         importers.add("TextImporter");
+        importers.add("TreetaggerImporter");
 
 
         for (PepperModuleDesc moduleDesc: this._pepper.getRegisteredModules()){
