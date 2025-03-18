@@ -11,7 +11,7 @@
 |               | Gate          | GateDocument   | 2.0       |               |
 |               |               | ateDocument    | 3.0       |               |
 |               | Tiger2        | tiger2         | 2.0.5     |               |
-|               | TigerXML      | tigerXML       | 1.0       |               |
+|               |               | tigerXML       | 1.0       |               |
 |               | Treetagger    | treetagger     | 1.0       |               |
 |               | Spreadsheet   | xls            | 97-2008   |               |
 |               |               | xlsx           | 2007+     |               |
