@@ -1,34 +1,40 @@
 # duui-uima-reader
 
 ## Supported Formats:
-- ### pepper-reader:
-  - RSD
-  - CoraXML
-  - PAULA
-  - Gate
-  - Tiger2
-  - TigerXML
-  - Spreadsheet
-  - WebannoTSV
-  - GeTa
-  - Toolbox
-  - CoNLL
-  - TEI
-  - GenericXML
-  - TCF
-  - RST
-  - Elan
-  - PTB
-  - Wolof
-  - EXMARaLDA
-  - CoNLLCoref
-  - SaltXML
-  - Text
-  - MMAX2 (broken)
-  - GrAF (broken)
-  - GraphAnno (broken)
-  - UAM (broken)
-  - Aldt (broken)
- 
-- ### annis-reader:
-  - relannis
+
+| Tool          | Name          | Format         | Version   |               |
+|---------------|---------------|----------------|-----------|---------------|
+| pepper-reader |               |                |           |               |
+|               | RSD           | RSD            | -         |               |
+|               | CoraXML       | coraXML        | 1.0       |               |
+|               | PAULA         | paula          | 1.0       |               |
+|               | Gate          | GateDocument   | 2.0       |               |
+|               |               | ateDocument    | 3.0       |               |
+|               | Tiger2        | tiger2         | 2.0.5     |               |
+|               | TigerXML      | tigerXML       | 1.0       |               |
+|               | Treetagger    | treetagger     | 1.0       |               |
+|               | Spreadsheet   | xls            | 97-2008   |               |
+|               |               | xlsx           | 2007+     |               |
+|               | WebannoTSV    | WebannoTSV     | -         |               |
+|               | GeTa          | GeTa           | -         |               |
+|               | Toolbox       | Toolbox        | -         |               |
+|               | CoNLL         | CoNLL          | 1.0       |               |
+|               | TEI           | TEI            | P5 2.6.0  |               |
+|               | GenericXML    | xml            | 1.0       |               |
+|               | TCF           | TCF            | 0.4       |               |
+|               | RST           | rs3            | 1.0       |               |
+|               | Elan          | elan           | 4.5.0     |               |
+|               | PTB           | PTB            | 1.0       |               |
+|               | Wolof         | Wolof          | -         |               |
+|               | EXMARaLDA     | EXMARaLDA      | 1.0       |               |
+|               | CoNLLCoref    | CoNLLCoref     | -         |               |
+|               | SaltXML       | SaltXML        | 1.0       |               |
+|               | Text          | txt            | 0.0       |               |
+|               | MMAX2         | mmax2          | 1.0       |  [broken]     |
+|               | GrAF          | GrAF           | 1.0       | [broken]      |
+|               | GraphAnno     | GraphAnno      | -         |    [broken]   |
+|               | UAM           | UAM            | 1.0       |  [broken]     |
+|               | Aldt          | aldt           | 1.0       | [broken]      |
+|               |               | aldt           | 1.5       | [broken]      |
+| annis-reader  |               |                |           |               |
+|               | relannis      | relannis       | 3.3       |               |
