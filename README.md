@@ -38,3 +38,10 @@
 |               |               | aldt           | 1.5       | [broken]      |
 | annis-reader  |               |                |           |               |
 |               | relannis      | relannis       | 3.3       |               |
+|openConv-reader|               |                |           |               |
+|               | text          | txt            | 0.0       |               |
+|               | TEI           | TEI            | -         |               |
+|               | alto          | alto           | -         |               |
+|               | doc           | doc            | -         |               |
+|               | docx          | docx           | -         |               |
+|               | HTML          | html           | -         |               |
