@@ -1,0 +1,9 @@
+uvicorn
+pydantic
+fastapi
+dkpro-cassis
+pydantic_settings
+tqdm
+requests
+python-multipart
+websockets
