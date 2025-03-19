@@ -24,6 +24,7 @@ Line = luajava.bindClass("org.texttechnologylab.annotation.annis.Line")
 
 
 util = luajava.bindClass("org.apache.uima.fit.util.JCasUtil")
+DocumentMetaData = luajava.bindClass("de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData")
 
 
 -- This "serialize" function is called to transform the CAS object into an stream that is sent to the annotator
@@ -49,10 +50,10 @@ function deserialize(inputCas, inputStream)
 
     inputCas:setDocumentText(results["sofa_str"])
 
-    if JCasUtil:select(inputCas, DocumentMetaData.class):isEmpty() then
-        dmd = DocumentMetaData.create(jc);
+    if util:select(inputCas, DocumentMetaData):isEmpty() then
+        dmd = DocumentMetaData:create(inputCas);
     else
-        dmd = JCasUtil:select(inputCas, DocumentMetaData.class):stream():findFirst()
+        dmd = util:select(inputCas, DocumentMetaData):iterator():next()
     end
 
     -- Meta Data
@@ -63,6 +64,7 @@ function deserialize(inputCas, inputStream)
             if meta_data["key"] == "doc-id" then
                 dmd:setDocumentId(meta_data["value"]);
                 dmd:setDocumentTitle(meta_data["value"]);
+                dmd:addToIndexes();
             end
             -- Meta Data
             local meta_obj = luajava.newInstance(MetaDataStringField, inputCas)
