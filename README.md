@@ -47,3 +47,5 @@
 |                     | HTML        | html         | -         |               |
 | sketchEngine-reader |             |              | -         |               |
 |                     | SE          | csv          | -         |               |
+| socc-reader         |             |              | -         |               |
+|                     | SOCC        | tsv          | -         |               |
