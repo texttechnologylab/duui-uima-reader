@@ -1,0 +1,1 @@
+docker run -p 9714:9714 duui-socc_reader:0.1
