@@ -18,10 +18,11 @@ BP = os.path.realpath(os.path.join(os.path.realpath(__file__), "../../.."))
 def convert_tsv(doc_name: str, tsv: str) -> Tuple[List[Negation], List[Paragraph], List[Token], str, str]:
     rd = csv.reader(StringIO(tsv), delimiter="\t", quotechar='"')
     text = []
+    text_dict = {}
     tokens = []
     paras = []
     negations = []
-
+    max_idx = 0
     cue = []
     focus = {}
     scope = {}
@@ -78,6 +79,16 @@ def convert_tsv(doc_name: str, tsv: str) -> Tuple[List[Negation], List[Paragraph
                         sent_end = tok_end
                         tok = Token(begin=tok_start, end=tok_end)
                         tokens.append(tok)
+                        tok_form = row[2]
+                        if tok_end > max_idx:
+                            max_idx = tok_end
+                        for tok_char_idx, char_idx in enumerate(range(tok_start, tok_end)):
+                            # print(tok_form[tok_char_idx], tok_start, tok_end)
+                            try:
+                                text_dict[char_idx] = tok_form[tok_char_idx]
+                            except:
+                                text_dict[char_idx] = " "
+
                         if len(row) >= 4:
                             if row[3] != "_" and row[3] != "":
                                 annos = row[3].split("|")
@@ -132,8 +143,16 @@ def convert_tsv(doc_name: str, tsv: str) -> Tuple[List[Negation], List[Paragraph
             for key in xscope:
                 negations[-1].xscope.append(xscope[key])
             focus = {}
+    sofa_str = ""
+    print(text_dict)
+    for i in range(max_idx):
+        try:
+            sofa_str += text_dict[i]
+        except:
+            sofa_str += " "
 
-    return negations, paras, tokens, doc_name, " ".join(text)
+    # return negations, paras, tokens, doc_name, " ".join(text)
+    return negations, paras, tokens, doc_name, sofa_str
 
 
 def read_socc_negation(zip_bytes: Union[bytes, BytesIO], target_folder_name: str):
