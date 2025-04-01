@@ -22,6 +22,20 @@ def test_method():
         print(*convert_tsv(key, res[key]), sep="\n")
         break
 
+def test_single_file():
+    # Example: Search for a folder named "target" starting from "C:/Users"
+    tsvf = f"{BP}/data/socc_negation/Negation_annotation/curation/aboriginal_1.txt/CURATION_USER.tsv"  # Replace with your starting path
+    with open(tsvf, 'r', encoding='utf-8') as f:
+        content = f.read()
+    res = convert_tsv("aboriginal_1", content)
+    sofa_str = res[4]
+    negations = res[0]
+    for neg in negations:
+        print(neg.cue)
+        print(sofa_str[neg.cue.begin:neg.cue.end])
+    # print(*res, sep="\n")
+    print(sofa_str)
+
 def test_api():
     init_url = "http://0.0.0.0:9714/v1/init"
     next_url = "http://0.0.0.0:9714/v1/process"
@@ -43,4 +57,4 @@ def test_api():
 
 # Example usage
 if __name__ == "__main__":
-    test_api()
+    test_single_file()
