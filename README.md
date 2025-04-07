@@ -51,3 +51,5 @@
 |                     | SOCC        | tsv          | -         |               |
 | sfu-reader          |             |              | -         |               |
 |                     | SFU         | xml          | -         |               |
+| conan_doyle-reader  |             |              | -         |               |
+|                     | CD          | txt/conll    | -         |               |
