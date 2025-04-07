@@ -49,3 +49,5 @@
 |                     | SE          | csv          | -         |               |
 | socc-reader         |             |              | -         |               |
 |                     | SOCC        | tsv          | -         |               |
+| sfu-reader          |             |              | -         |               |
+|                     | SFU         | xml          | -         |               |
