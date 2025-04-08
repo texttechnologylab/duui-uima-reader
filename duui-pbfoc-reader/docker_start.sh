@@ -1,0 +1,1 @@
+docker run -p 9714:9714 duui-cd_reader:0.1

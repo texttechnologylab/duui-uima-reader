@@ -1,0 +1,41 @@
+import os
+import requests
+
+from pbfoc_reader_utils.pbfoc_reader import read_pbfoc_file, parse_pbfoc_file
+
+BP = os.path.realpath(os.path.join(os.path.realpath(__file__), "../.."))
+
+def test_api():
+    init_url = "http://0.0.0.0:9714/v1/init"
+    next_url = "http://0.0.0.0:9714/v1/process"
+
+    test_file = f"{BP}/data/SEM-2012-SharedTask-PB-FOC-t.zip"
+
+    file = {'file': open(test_file, 'rb')}
+    response = requests.post(url=init_url, files=file)
+    print(response.status_code)  # 201 (Created)
+    response = response.json()
+    print(response)
+
+    for _ in range(response["n_docs"]):
+        res_json = {}
+        response = requests.post(url=next_url, json={}).json()
+        # print(response["sofa_str"])
+        # print(response["token"])
+        for neg in response["negations"]:
+            print(neg["cue"]["begin"], neg["cue"]["end"])
+            print(response["sofa_str"][neg["cue"]["begin"]:neg["cue"]["end"]])
+
+
+def test_reading():
+    tp = f"{BP}/data/SEM-2012-SharedTask-PB-FOC-t.zip"
+    with open(tp, 'rb') as f:
+        content = f.read()
+    files = read_pbfoc_file(content)
+    print(files.keys())
+    res = parse_pbfoc_file(read_pbfoc_file(content)['SEM-2012-SharedTask-PB-FOC-tr_dev'])[3]
+
+
+# Example usage
+if __name__ == "__main__":
+    test_api()
