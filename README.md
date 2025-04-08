@@ -53,3 +53,5 @@
 |                     | SFU         | xml          | -         |               |
 | conan_doyle-reader  |             |              | -         |               |
 |                     | CD          | txt/conll    | -         |               |
+| pb-foc-reader       |             |              | -         |               |
+|                     | PB-FOC      | ~PTB(conll)  | -         |               |
