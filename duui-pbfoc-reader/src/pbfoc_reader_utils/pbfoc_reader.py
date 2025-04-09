@@ -31,6 +31,12 @@ def parse_pbfoc_file(content: str):
                 token_form = " ".join(token)
                 if token[4] == "n't":
                     token[4] = "not"
+                if token[4] == "ca":
+                    token[4] = "can"
+                if token[4] == "wo":
+                    token[4] = "will"
+                if token[4] == "sha":
+                    token[4] = "shall"
                 token_obj = Token(begin=offset, end=offset + len(token[4]))
                 sofa.append(token[4])
                 total_tokens.append(token_obj)
