@@ -57,4 +57,6 @@
 |                     | PB-FOC      | ~PTB(conll)  | -         |               |
 | bioscope-reader     |             |              | -         |               |
 |                     | BS          |  csv         | -         |               |
+| deep-tutor-neg      |             |              | -         |               |
+|                     | txt         |  txt         | -         |               |
 
