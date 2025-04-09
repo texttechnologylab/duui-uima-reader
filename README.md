@@ -55,3 +55,6 @@
 |                     | CD          | txt/conll    | -         |               |
 | pb-foc-reader       |             |              | -         |               |
 |                     | PB-FOC      | ~PTB(conll)  | -         |               |
+| bioscope-reader     |             |              | -         |               |
+|                     | BS          |  csv         | -         |               |
+
