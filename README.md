@@ -37,7 +37,7 @@
 |                     | Aldt        | aldt         | 1.0       | [broken]      |
 |                     |             | aldt         | 1.5       | [broken]      |
 | annis-reader        |             |              |           |               |
-|                     | relannis    | relannis     | 3.3       |               |
+|                     | ANNIS       | relannis     | 3.3       |               |
 | openConv-reader     |             |              |           |               |
 |                     | text        | txt          | 0.0       |               |
 |                     | TEI         | TEI          | -         |               |
@@ -45,6 +45,23 @@
 |                     | doc         | doc          | -         |               |
 |                     | docx        | docx         | -         |               |
 |                     | HTML        | html         | -         |               |
+| annatto-reader      |             |              |           |               |
+|                     | CoNLL-U     | conllu       | -         |               |
+|                     | EXMARaLDA   | EXMARaLDA    | -         |               |
+|                     | graphML     | graphML      | -         |               |
+|                     | meta        | meta         | -         |               |
+|                     | opus        | opus         | -         |               |
+|                     | path        | path         | -         |               |
+|                     | PTB         | ptb          | -         |               |
+|                     | ANNIS       | relannis 3.3 | -         |               |
+|                     | SaltXML     | SaltXML      | -         |               |
+|                     | table       | table        | -         |               |
+|                     | textgrid    | textgrid     | -         |               |
+|                     | toolbox     | toolbox      | -         |               |
+|                     | treetagger  | treetagger   | -         |               |
+|                     | whisper     | whisper      | -         |               |
+|                     | xlsx        | xlsx         | -         |               |
+|                     | xml         | xml          | -         |               |
 | sketchEngine-reader |             |              | -         |               |
 |                     | SE          | csv          | -         |               |
 | socc-reader         |             |              | -         |               |
