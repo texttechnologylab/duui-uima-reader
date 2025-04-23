@@ -1,0 +1,11 @@
+pydantic
+uvicorn
+dkpro-cassis
+fastapi
+pydantic_settings
+starlette
+requests
+python-multipart
+websockets
+
+conllu
