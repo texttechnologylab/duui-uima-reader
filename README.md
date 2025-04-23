@@ -59,4 +59,6 @@
 |                     | BS          |  csv         | -         |               |
 | deep-tutor-neg      |             |              | -         |               |
 |                     | txt         |  txt         | -         |               |
+| Leipzig Glossing    |             |              | -         |               |
+|                     | tex         |  tex         | -         |               |
 
