@@ -32,15 +32,16 @@ def test_single_corpus():
         response = requests.post(url=next_url, json={}).json()
         print(response["sofa_str"])
         print(response["token"])
-        print(response["meta_data"])
-        for key in response:
+        print(response["lemma"])
+        # print(response["meta_data"])
+        """for key in response:
             if key in ["sofa_str", "accepted"]:
                 pass
             else:
                 res_json[key] = [anno["value"] for anno in response[key]]
 
         with open(f"{BP}/data/dump/example_annotation_values.json", "w", encoding="utf-8") as jf:
-            json.dump(response, jf, ensure_ascii=False, indent=4)
+            json.dump(response, jf, ensure_ascii=False, indent=4)"""
 
 
 def test_multiple_corpora():

@@ -61,19 +61,22 @@ function deserialize(inputCas, inputStream)
     local meta_data_counter = 1
     if results["meta_data"] ~= null then
         for i, meta_data in ipairs(results["meta_data"]) do
-            if meta_data["key"] == "doc-id" then
+            if meta_data["key"] == "doc-name" then
                 dmd:setDocumentId(meta_data["value"]);
                 dmd:setDocumentTitle(meta_data["value"]);
                 dmd:addToIndexes();
-            end
-            -- Meta Data
-            local meta_obj = luajava.newInstance(MetaDataStringField, inputCas)
-            meta_obj:setBegin(meta_obj["begin"])
-            meta_obj:setEnd(meta_obj["end"])
-            meta_obj:addToIndexes()
+            else
+                -- Meta Data
+                local meta_obj = luajava.newInstance("de.tudarmstadt.ukp.dkpro.core.api.metadata.type.MetaDataStringField", inputCas)
+                meta_obj:setBegin(meta_data["begin"])
+                meta_obj:setEnd(meta_data["end"])
+                meta_obj:setKey(meta_data["key"])
+                meta_obj:setValue(meta_data["value"])
+                meta_obj:addToIndexes()
 
-            meta_data_list[meta_data_counter] = meta_obj
-            meta_data_counter = meta_data_counter + 1
+                meta_data_list[meta_data_counter] = meta_obj
+                meta_data_counter = meta_data_counter + 1
+            end
         end
     end
 
@@ -82,7 +85,7 @@ function deserialize(inputCas, inputStream)
     local token_counter = 1
     if results["token"] ~= null then
         for i, tok in ipairs(results["token"]) do
-            local token_obj = luajava.newInstance(Token, inputCas)
+            local token_obj = luajava.newInstance("de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token", inputCas)
             token_obj:setBegin(tok["begin"])
             token_obj:setEnd(tok["end"])
             token_obj:addToIndexes()
@@ -97,7 +100,7 @@ function deserialize(inputCas, inputStream)
     local pos_counter = 1
     if results["pos"] ~= null then
         for i, pos in ipairs(results["pos"]) do
-            local pos_obj = luajava.newInstance(POS, inputCas)
+            local pos_obj = luajava.newInstance("de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS", inputCas)
             pos_obj:setBegin(pos["begin"])
             pos_obj:setEnd(pos["end"])
             pos_obj:setPosValue(pos["value"])
@@ -113,7 +116,7 @@ function deserialize(inputCas, inputStream)
     local lang_counter = 1
     if results["lang"] ~= null then
         for i, lang in ipairs(results["lang"]) do
-            local lang_obj = luajava.newInstance(Lang, inputCas)
+            local lang_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Language", inputCas)
             lang_obj:setBegin(lang["begin"])
             lang_obj:setEnd(lang["end"])
             lang_obj:setValue(lang["value"])
@@ -128,7 +131,7 @@ function deserialize(inputCas, inputStream)
     local lemma_counter = 1
     if results["lemma"] ~= null then
         for i, lemma in ipairs(results["lemma"]) do
-            local lemma_obj = luajava.newInstance(Lemma, inputCas)
+            local lemma_obj = luajava.newInstance("de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma", inputCas)
             lemma_obj:setBegin(lemma["begin"])
             lemma_obj:setEnd(lemma["end"])
             lemma_obj:setValue(lemma["value"])
@@ -159,7 +162,7 @@ function deserialize(inputCas, inputStream)
     local verse_counter = 1
     if results["verse"] ~= null then
         for i, verse in ipairs(results["verse"]) do
-            local verse_obj = luajava.newInstance(Verse, inputCas)
+            local verse_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Verse", inputCas)
             verse_obj:setBegin(verse["begin"])
             verse_obj:setEnd(verse["end"])
             verse_obj:setValue(verse["value"])
@@ -174,7 +177,7 @@ function deserialize(inputCas, inputStream)
     local line_counter = 1
     if results["line"] ~= null then
         for i, line in ipairs(results["line"]) do
-            local line_obj = luajava.newInstance(Line, inputCas)
+            local line_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Line", inputCas)
             line_obj:setBegin(line["begin"])
             line_obj:setEnd(line["end"])
             line_obj:setValue(line["value"])
@@ -189,7 +192,7 @@ function deserialize(inputCas, inputStream)
     local writer_counter = 1
     if results["writer"] ~= null then
         for i, writer in ipairs(results["writer"]) do
-            local writer_obj = luajava.newInstance(Writer, inputCas)
+            local writer_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Writer", inputCas)
             writer_obj:setBegin(writer["begin"])
             writer_obj:setEnd(writer["end"])
             writer_obj:setValue(writer["value"])
@@ -204,7 +207,7 @@ function deserialize(inputCas, inputStream)
     local clause_counter = 1
     if results["clause"] ~= null then
         for i, clause in ipairs(results["clause"]) do
-            local clause_obj = luajava.newInstance(Clause, inputCas)
+            local clause_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Clause", inputCas)
             clause_obj:setBegin(clause["begin"])
             clause_obj:setEnd(clause["end"])
             clause_obj:setValue(clause["value"])
@@ -219,7 +222,7 @@ function deserialize(inputCas, inputStream)
     local inflectionClassLemma_counter = 1
     if results["inflectionClassLemma"] ~= null then
         for i, icl in ipairs(results["inflectionClassLemma"]) do
-            local icl_obj = luajava.newInstance(InflectionClassLemma, inputCas)
+            local icl_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.InflectionClassLemma", inputCas)
             icl_obj:setBegin(icl["begin"])
             icl_obj:setEnd(icl["end"])
             icl_obj:setValue(icl["value"])
@@ -234,7 +237,7 @@ function deserialize(inputCas, inputStream)
     local subchapter_counter = 1
     if results["subchapter"] ~= null then
         for i, subchapter in ipairs(results["subchapter"]) do
-            local subchapter_obj = luajava.newInstance(Subchapter, inputCas)
+            local subchapter_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.SubChapter", inputCas)
             subchapter_obj:setBegin(subchapter["begin"])
             subchapter_obj:setEnd(subchapter["end"])
             subchapter_obj:setValue(subchapter["value"])
@@ -249,7 +252,7 @@ function deserialize(inputCas, inputStream)
     local posLemma_counter = 1
     if results["posLemma"] ~= null then
         for i, posLemma in ipairs(results["posLemma"]) do
-            local posLemma_obj = luajava.newInstance(PosLemma, inputCas)
+            local posLemma_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.PosLemma", inputCas)
             posLemma_obj:setBegin(posLemma["begin"])
             posLemma_obj:setEnd(posLemma["end"])
             posLemma_obj:setValue(posLemma["value"])
@@ -264,7 +267,7 @@ function deserialize(inputCas, inputStream)
     local inflection_counter = 1
     if results["inflection"] ~= null then
         for i, inflection in ipairs(results["inflection"]) do
-            local inflection_obj = luajava.newInstance(Inflection, inputCas)
+            local inflection_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Inflection", inputCas)
             inflection_obj:setBegin(inflection["begin"])
             inflection_obj:setEnd(inflection["end"])
             inflection_obj:setValue(inflection["value"])
@@ -295,7 +298,7 @@ function deserialize(inputCas, inputStream)
     local page_counter = 1
     if results["page"] ~= null then
         for i, page in ipairs(results["page"]) do
-            local page_obj = luajava.newInstance(Page, inputCas)
+            local page_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Page", inputCas)
             page_obj:setBegin(page["begin"])
             page_obj:setEnd(page["end"])
             page_obj:setValue(page["value"])
@@ -310,7 +313,7 @@ function deserialize(inputCas, inputStream)
     local rhyme_counter = 1
     if results["rhyme"] ~= null then
         for i, rhyme in ipairs(results["rhyme"]) do
-            local rhyme_obj = luajava.newInstance(Rhyme, inputCas)
+            local rhyme_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Rhyme", inputCas)
             rhyme_obj:setBegin(rhyme["begin"])
             rhyme_obj:setEnd(rhyme["end"])
             rhyme_obj:setValue(rhyme["value"])
@@ -325,7 +328,7 @@ function deserialize(inputCas, inputStream)
     local translation_counter = 1
     if results["translation"] ~= null then
         for i, translation in ipairs(results["translation"]) do
-            local translation_obj = luajava.newInstance(Translation, inputCas)
+            local translation_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Translation", inputCas)
             translation_obj:setBegin(translation["begin"])
             translation_obj:setEnd(translation["end"])
             translation_obj:setValue(translation["value"])
@@ -340,7 +343,7 @@ function deserialize(inputCas, inputStream)
     local chapter_counter = 1
     if results["chapter"] ~= null then
         for i, chapter in ipairs(results["chapter"]) do
-            local chapter_obj = luajava.newInstance(Chapter, inputCas)
+            local chapter_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Chapter", inputCas)
             chapter_obj:setBegin(chapter["begin"])
             chapter_obj:setEnd(chapter["end"])
             chapter_obj:setValue(chapter["value"])
@@ -355,7 +358,7 @@ function deserialize(inputCas, inputStream)
     local inflectionClass_counter = 1
     if results["inflectionClass"] ~= null then
         for i, ic in ipairs(results["inflectionClass"]) do
-            local ic_obj = luajava.newInstance(InflectionClass, inputCas)
+            local ic_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.InflectionClass", inputCas)
             ic_obj:setBegin(ic["begin"])
             ic_obj:setEnd(ic["end"])
             ic_obj:setValue(ic["value"])
@@ -370,7 +373,7 @@ function deserialize(inputCas, inputStream)
     local edition_counter = 1
     if results["edition"] ~= null then
         for i, edition in ipairs(results["edition"]) do
-            local edition_obj = luajava.newInstance(Variation, inputCas)
+            local edition_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Variation", inputCas)
             edition_obj:setBegin(edition["begin"])
             edition_obj:setEnd(edition["end"])
             edition_obj:setValue(edition["value"])
@@ -386,7 +389,7 @@ function deserialize(inputCas, inputStream)
     local text_counter = 1
     if results["text"] ~= null then
         for i, text in ipairs(results["text"]) do
-            local text_obj = luajava.newInstance(Variation, inputCas)
+            local text_obj = luajava.newInstance("org.texttechnologylab.annotation.annis.Variation", inputCas)
             text_obj:setBegin(text["begin"])
             text_obj:setEnd(text["end"])
             text_obj:setValue(text["value"])
