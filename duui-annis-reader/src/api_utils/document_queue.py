@@ -4,7 +4,7 @@ from typing import List, Tuple, Any, Dict, Optional, Union
 
 class AnnisDocument:
     """
-    Representation of a annis-document
+    Representation of an annis-document
     """
     def __init__(self,
                  text: str,
@@ -71,6 +71,7 @@ class DocumentQueue:
         :return:
         """
         for key in text_per_document:
+            # print(annotations_per_doc[key])
             self.docs.append(AnnisDocument(text=text_per_document[key],
                                            annotations=annotations_per_doc[key],
                                            meta_data=meta_data_per_document.get(key) if meta_data_per_document is not None else None))

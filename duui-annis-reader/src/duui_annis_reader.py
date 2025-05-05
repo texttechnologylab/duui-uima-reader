@@ -53,6 +53,7 @@ class DUUIResponse(BaseModel):
     translation: Optional[List[Translation]] = None
     chapter: Optional[List[Chapter]] = None
     inflectionClass: Optional[List[InflectionClass]] = None
+
     edition: Optional[List[Edition]] = None
 
     sofa_str: Optional[str] = None
@@ -198,6 +199,7 @@ async def init_annis_reader(file: UploadFile = File(...)) -> InitResponse:
 
         for document_id in documents:
             # print(document_id)
+            # print(documents[document_id])
             node_annis = documents[document_id]['node.annis']
             node_annotation_annis = documents[document_id]['node_annotation.annis']
             corpus_annis = documents[document_id]['corpus.annis']
@@ -215,7 +217,7 @@ async def init_annis_reader(file: UploadFile = File(...)) -> InitResponse:
             except Exception as e:
                 print(e)
                 mpd = None
-
+            print(mpd)
             QUEUE.fill(annotations_per_doc=apd,
                        text_per_document=tpd,
                        meta_data_per_document=mpd) # TODO add metadata
