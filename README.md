@@ -18,6 +18,21 @@ Despite their success, LLMs are too computationally expensive to replace task- o
 To use DUUR, you only need Docker or podman and DUUI to run a Compose setup.
 
 ```java
+import org.dkpro.core.api.resources.CompressionMethod;
+import org.dkpro.core.io.xmi.XmiWriter;
+import org.junit.jupiter.api.Test;
+import org.texttechnologylab.DockerUnifiedUIMAInterface.DUUIComposer;
+import org.texttechnologylab.DockerUnifiedUIMAInterface.driver.*;
+import org.texttechnologylab.DockerUnifiedUIMAInterface.io.DUUIAsynchronousProcessor;
+import org.texttechnologylab.DockerUnifiedUIMAInterface.io.reader.DUUIDynamicReaderLazy;
+import org.texttechnologylab.DockerUnifiedUIMAInterface.lua.DUUILuaContext;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.util.List;
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
+
 
 public class ReaderTestExample {
     int iWorker = 1;
