@@ -8,22 +8,22 @@ This repository contains components for the DUUR framework, a corpus conversion 
 **DUUI** as well as **DUUR** are developed and maintained at the **Texttechnologylab** ([TTLab](https://www.texttechnologylab.org/)) at the Goethe University Frankfurt.
 
 
-## Introduction
+### Introduction
 
 Despite their success, LLMs are too computationally expensive to replace task- or domain-specific NLP systems. Yet, the diversity of corpus formats across domains makes it difficult to reuse or adapt these specialized systems. As a result, the NLP field faces a trade-off between the efficiency of domain-specific systems and the generality of large language models, underscoring the need for an interoperable NLP landscape. DUUR addresses this challenge by pursuing two objectives: standardizing corpus formats and enabling massively parallel corpus processing. DUUR represents a unified conversion framework embedded in a massively parallel, microservice-based, programming language-independent NLP architecture designed for modularity and extensibility. It allows for the integration of external NLP conversion tools and supports the addition of new components that meet basic compatibility requirements.
 
 
 
-## Usage & Support
+### Usage & Support
 
 To use DUUR, you only need Docker or podman and DUUI to run a Compose setup.
 
-# Cite
+### Cite
 If you want to use the project please quote this as follows:
 
 Hammerla, L., Mehler, A., & Abrami, G. (2025, December). Standardizing Heterogeneous Corpora with DUUR: A Dual Data- and Process-Oriented Approach to Enhancing NLP Pipeline Integration. In K. Inui, S. Sakti, H. Wang, D. F. Wong, P. Bhattacharyya, B. Banerjee, … D. P. Singh (Eds), Proceedings of the 14th International Joint Conference on Natural Language Processing and the 4th Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics (pp. 1410–1425). Retrieved from https://aclanthology.org/2025.findings-ijcnlp.87/
 
-## BibTeX
+### BibTeX
 ```
 
 @inproceedings{Hammerla:et:al:2025a,
@@ -66,7 +66,7 @@ Hammerla, L., Mehler, A., & Abrami, G. (2025, December). Standardizing Heterogen
 
 ```
 
-## Supported Formats:
+### Supported Formats:
 
 - List of integrated third-party conversion tools. Each component supports multiple corpus formats, with some tools offering overlapping functionality:
 
