@@ -12,11 +12,66 @@ This repository contains components for the DUUR framework, a corpus conversion 
 
 Despite their success, LLMs are too computationally expensive to replace task- or domain-specific NLP systems. Yet, the diversity of corpus formats across domains makes it difficult to reuse or adapt these specialized systems. As a result, the NLP field faces a trade-off between the efficiency of domain-specific systems and the generality of large language models, underscoring the need for an interoperable NLP landscape. DUUR addresses this challenge by pursuing two objectives: standardizing corpus formats and enabling massively parallel corpus processing. DUUR represents a unified conversion framework embedded in a massively parallel, microservice-based, programming language-independent NLP architecture designed for modularity and extensibility. It allows for the integration of external NLP conversion tools and supports the addition of new components that meet basic compatibility requirements.
 
+```java
+
+public class ReaderTestExample {
+    int iWorker = 1;
+
+    public ReaderTestExample() throws URISyntaxException, IOException {
+    }
+
+    @Test
+    public void DynamicDTNegReaderTestFull() throws Exception {
+        // Without Docker: DUUIPipelineComponent readerComp = new DUUIRemoteDriver.Component("http://0.0.0.0:9714").build();
+        DUUIPipelineComponent readerComp = new DUUIDockerDriver.Component("duui-biofid_reader:1.0")
+                .withScale(iWorker).withImageFetching()
+                .build().withTimeout(30);
+
+        List<DUUIPipelineComponent> compList = List.of(readerComp);
+        Path filePath = Path.of("/path/to/your/corpus/data/biofid_test.zip");
+        DUUIDynamicReaderLazy dynamicReader = new DUUIDynamicReaderLazy(filePath, compList);
+
+        String sOutputPath = "/path/to/your/output/corpus/data/biofid_test.zip";
+        DUUIAsynchronousProcessor pProcessor = new DUUIAsynchronousProcessor(dynamicReader);
+        new File(sOutputPath).mkdir();
+        DUUILuaContext ctx = new DUUILuaContext().withJsonLibrary();
+        DUUIComposer composer = new DUUIComposer()
+                .withSkipVerification(true)   
+                .withLuaContext(ctx)         
+                .withWorkers(iWorker);     
+
+        DUUIDockerDriver docker_driver = new DUUIDockerDriver();
+        DUUISwarmDriver swarm_driver = new DUUISwarmDriver();
+        DUUIRemoteDriver remote_driver = new DUUIRemoteDriver();
+        DUUIUIMADriver uima_driver = new DUUIUIMADriver()
+                .withDebug(true);
+        composer.addDriver(docker_driver, uima_driver
+                ,swarm_driver, remote_driver
+        );
+
+        composer.add(new DUUIUIMADriver.Component(createEngineDescription(XmiWriter.class,
+                XmiWriter.PARAM_TARGET_LOCATION, sOutputPath,
+                XmiWriter.PARAM_PRETTY_PRINT, true,
+                XmiWriter.PARAM_OVERWRITE, true,
+                XmiWriter.PARAM_VERSION, "1.1",
+                XmiWriter.PARAM_COMPRESSION, CompressionMethod.BZIP2
+        )).withScale(iWorker).build());
+
+        composer.run(pProcessor, "DynamicReaderBiofidTest");
+
+    }
+
+}
+
+
+
+```
 
 
 ### Usage & Support
 
 To use DUUR, you only need Docker or podman and DUUI to run a Compose setup.
+
 
 ### Cite
 If you want to use the project please quote this as follows:
