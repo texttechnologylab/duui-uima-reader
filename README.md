@@ -12,6 +12,11 @@ This repository contains components for the DUUR framework, a corpus conversion 
 
 Despite their success, LLMs are too computationally expensive to replace task- or domain-specific NLP systems. Yet, the diversity of corpus formats across domains makes it difficult to reuse or adapt these specialized systems. As a result, the NLP field faces a trade-off between the efficiency of domain-specific systems and the generality of large language models, underscoring the need for an interoperable NLP landscape. DUUR addresses this challenge by pursuing two objectives: standardizing corpus formats and enabling massively parallel corpus processing. DUUR represents a unified conversion framework embedded in a massively parallel, microservice-based, programming language-independent NLP architecture designed for modularity and extensibility. It allows for the integration of external NLP conversion tools and supports the addition of new components that meet basic compatibility requirements.
 
+
+### Usage & Support
+
+To use DUUR, you only need Docker or podman and DUUI to run a Compose setup.
+
 ```java
 
 public class ReaderTestExample {
@@ -63,15 +68,7 @@ public class ReaderTestExample {
 
 }
 
-
-
 ```
-
-
-### Usage & Support
-
-To use DUUR, you only need Docker or podman and DUUI to run a Compose setup.
-
 
 ### Cite
 If you want to use the project please quote this as follows:
